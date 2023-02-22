@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'Selamat Datang';
+});
+
+Route::get('/about', function () {
+    return 'NIM: 2141720036 || Nama: Lailatul Badriyah';
+});
+
+Route::get('/articles/{id}', function ($id) {
+    return 'Halaman Artikel dengan ID ' . $id;
 });
