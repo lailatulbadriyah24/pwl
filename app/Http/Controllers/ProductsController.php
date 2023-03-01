@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
-    //s
+    //
     public function index()
     {
         return "Halaman Kategori";
