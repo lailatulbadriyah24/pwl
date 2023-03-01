@@ -8,14 +8,17 @@ class ProgramController extends Controller
 {
     //
     function kurir(){
-        return 'Halaman Kurir';
+        return view('program', [
+            'judul' => 'Halaman Kurir' ]);
     }
 
     function magang(){
-        return 'Halaman Magang';
+        return view('program', [
+            'judul' => 'Halaman Magang' ]);
     }
 
     function kunjunganIndustri(){
-        return 'Halaman Kunjungan Industri';
+        return view('program', [
+            'judul' => 'Halaman Kunjungan Industri' ]);
     }
 }
