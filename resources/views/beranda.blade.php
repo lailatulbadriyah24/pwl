@@ -1,5 +1,12 @@
-@extends('layouts.template',["title" => "beranda"])
+@extends('layouts.template', ['title' => 'beranda'])
 @section('content')
+    @push('custom_css')
+        <style>
+            h1 {
+                font-weight: bold;
+            }
+        </style>
+    @endpush
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -36,7 +43,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    Saya tertarik dengan desain UI/UX, pengajaran, desain grafis, pemrograman, atau hal-hal yang 
+                    Saya tertarik dengan desain UI/UX, pengajaran, desain grafis, pemrograman, atau hal-hal yang
                     berhubungan dengan teknologi 💖
                 </div>
                 <!-- /.card-body -->
@@ -54,5 +61,5 @@
 @push('custom_js')
     <script>
         alert('Selamat Datang');
-        </script>
+    </script>
 @endpush
