@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class, 'index']);
 Route::get('/profile',[ProfileController::class, 'profile']);
 Route::get('/college',[PengalamanKuliahController::class, 'college']);
+Route::get('/articles',[ArticleController::class, 'index']);
 
 // Route::get('/',[HomeController::class,'index']);
 // Route::prefix('category')->group(function (){

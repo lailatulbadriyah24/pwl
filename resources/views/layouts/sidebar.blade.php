@@ -84,6 +84,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/articles" class="nav-link {{ $title == 'article'? 'active' : '' }}"">
+                        <i class="nav-icon fas fa-newspaper"></i>
+                        <p>
+                            Articles
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
 
             </ul>
         </nav>
