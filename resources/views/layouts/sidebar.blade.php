@@ -93,7 +93,33 @@
                         </p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="/hobi" class="nav-link {{ $title == 'hobi'? 'active' : '' }}"">
+                        <i class="nav-icon fas fa-heart"></i>
+                        <p>
+                            Hobi
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/keluarga" class="nav-link {{ $title == 'keluarga'? 'active' : '' }}"">
+                        <i class="nav-icon fas fa-house-user"></i>
+                        <p>
+                            Keluarga
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/mata_kuliah" class="nav-link {{ $title == 'mata_kuliah'? 'active' : '' }}"">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Mata Kuliah
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
