@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HobiController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\PengalamanKuliahController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,13 +30,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Pertemuan 3 - Praktikum 2
-Route::get('/',[HomeController::class, 'index']);
-Route::get('/profile',[ProfileController::class, 'profile']);
-Route::get('/college',[PengalamanKuliahController::class, 'college']);
-Route::get('/articles',[ArticleController::class, 'index']);
-Route::get('/hobi',[HobiController::class, 'index']);
-Route::get('/keluarga',[KeluargaController::class, 'index']);
-Route::get('/mata_kuliah',[MataKuliahController::class, 'index']);
+// Route::get('/',[HomeController::class, 'index']);
+// Route::get('/profile',[ProfileController::class, 'profile']);
+// Route::get('/college',[PengalamanKuliahController::class, 'college']);
+// Route::get('/articles',[ArticleController::class, 'index']);
+// Route::get('/hobi',[HobiController::class, 'index']);
+// Route::get('/keluarga',[KeluargaController::class, 'index']);
+// Route::get('/mata_kuliah',[MataKuliahController::class, 'index']);
 
 // Route::get('/',[HomeController::class,'index']);
 // Route::prefix('category')->group(function (){
@@ -52,3 +54,15 @@ Route::get('/mata_kuliah',[MataKuliahController::class, 'index']);
 // });
 // Route::get("/about-us",[AboutController::class,"index"]);
 // Route::resource("/contact-us",ContactController::class)->only(["index","store"]);
+Auth::routes();
+Route::get('logout', [LoginController::class, 'logout']);
+Route::middleware(['auth'])->group(function(){
+    Route::get('/',[HomeController::class, 'index']);
+    Route::get('/profile',[ProfileController::class, 'profile']);
+    Route::get('/college',[PengalamanKuliahController::class, 'college']);
+    Route::get('/articles',[ArticleController::class, 'index']);
+    Route::get('/hobi',[HobiController::class, 'index']);
+    Route::get('/keluarga',[KeluargaController::class, 'index']);
+    Route::get('/mata_kuliah',[MataKuliahController::class, 'index']);
+});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
