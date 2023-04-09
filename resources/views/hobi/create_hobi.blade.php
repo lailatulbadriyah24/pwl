@@ -31,7 +31,7 @@
             <!-- Default box -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Daftar Hobi 🔮  </h3>
+                    <h3 class="card-title">Tambah Data Hobi 🔮</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -43,29 +43,22 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Nama</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($hobi as $no => $a)
-                                    <tr class="">
-                                        <td scope="row">{{ $no + 1 }}</td>
-                                        <td>{{ $a->nama }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+
+                    <form method="POST" action="{{ $url_form }}"> 
+                        @csrf
+                        {!! (isset($hb))? method_field('PUT') : ""!!}
+                        
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input class="form-control @error('nama') is-invalid @enderror" value="{{ isset($hb)? $hb->nama : old('nama') }}" name="nama" type="text" /> 
+                            @error('nama')
+                            <span class="error invalid-feedback">{{ $message }} </span> @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="#" class="btn btn-warning" onclick="history.back()">Kembali</a>
+                        
                 <!-- /.card-body -->
-                <div class="card-footer">
-                    Pemrograman Web Lanjut
-                </div>
+
                 <!-- /.card-footer-->
             </div>
             <!-- /.card -->
