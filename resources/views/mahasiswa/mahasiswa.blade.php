@@ -58,23 +58,31 @@
                                 <th>NIM</th>
                                 <th>Nama</th>
                                 <th>JK</th>
+                                <th>Nama Kelas</th>
                                 <th>HP</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($mhs->count() > 0)
-                                @foreach ($mhs as $i => $m)
+                            @if ($mahasiswa->count() > 0)
+                            @php
+                            $no = 1;
+                            @endphp
+                                @foreach ($paginate as $m)
                                     <tr>
-                                        <td>{{ ++$i }}</td>
+                                        <td>{{ $no++ }}</td>
                                         <td>{{ $m->nim }}</td>
                                         <td>{{ $m->nama }}</td>
                                         <td>{{ $m->jk }}</td>
+                                        <td>{{ $m->kelas->nama_kelas }}</td>
                                         <td>{{ $m->hp }}</td>
                                         <td >
                                             <!-- Bikin tombol edit dan delete -->
                                             <div class="row justify-content-center">
                                                 
+                                                <a href="{{ url('/mahasiswa/' . $m->id) }}" 
+                                                    class="btn btn-sm btn-info mr-2">Show</a>
+
                                                 <a href="{{ url('/mahasiswa/' . $m->id . '/edit') }}" 
                                                     class="btn btn-sm btn-warning mr-2">Edit</a>
                                             
@@ -95,7 +103,7 @@
                                 </tr>
                             @endif
                         </tbody>
-                    </table>
+                    </table>                  
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
