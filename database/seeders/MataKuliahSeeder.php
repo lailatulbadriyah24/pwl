@@ -15,32 +15,31 @@ class MataKuliahSeeder extends Seeder
      */
     public function run()
     {
-        //
-        DB::table('mata_kuliah')->insert(
+        DB::table('matakuliah')->insert(
             [
                 [
-                    "nama" => "Rekayasa Perangkat Lunak",
-                    "semester" => 2,
+                    "nama_matkul" => "Pemrograman Berbasis Objek",
                     "sks" => 3,
-                    "dosen" => "Ananda, S.Kom., M.Kom"
+                    "jam" => 6,
+                    "semester" => 4,
                 ],
                 [
-                    "nama" => "Sistem Operasi",
-                    "semester" => 2,
-                    "sks" => 2,
-                    "dosen" => "Dina Hapsari, S.Kom., M.Kom"
-                ],
-                [
-                    "nama" => "Dasar Pemrograman",
-                    "semester" => 1,
+                    "nama_matkul" => "Pemrograman Web Lanjut",
                     "sks" => 3,
-                    "dosen" => "Cahya Subagya, S.Kom., M.Kom"
+                    "jam" => 6,
+                    "semester" => 4,
                 ],
                 [
-                    "nama" => "Kewarganegaraan",
-                    "semester" => 3,
-                    "sks" => 2,
-                    "dosen" => "Winda Susilo, S.Kom., M.Kom"
+                    "nama_matkul" => "Basis Data Lanjut",
+                    "sks" => 3,
+                    "jam" => 4,
+                    "semester" => 4,
+                ],
+                [
+                    "nama_matkul" => "Praktikum Basis Data Lanjut",
+                    "sks" => 3,
+                    "jam" => 6,
+                    "semester" => 4,
                 ]
             ]
         );
