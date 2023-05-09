@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MataKuliah extends Model
+class MataKuliah2 extends Model
 {
     use HasFactory;
-    protected $table = 'matakuliah';
+    protected $table = 'mata_kuliah';
     // protected $primarykey = 'id';
     // protected $keyType = 'int';
-    public function mahasiswas(){
-        return $this->belongsToMany(MahasiswaModel::class, 'mahasiswa_matakuliah','matakuliah_id','mahasiswa_id')->withPivot('nilai');
-    }
 
     protected $fillable = [
         'nama',

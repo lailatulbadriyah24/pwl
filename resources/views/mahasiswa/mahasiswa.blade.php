@@ -91,8 +91,10 @@
                                                 <form method="POST" action="{{ url('/mahasiswa/' . $m->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger mr-2">Hapus</button>
                                                 </form>
+                                                    <a href="/nilai/{{ $m->id }}" class="btn btn-sm btn-success">Nilai</a>
+
                                             </div>                                            
                                         </td>
                                     </tr>

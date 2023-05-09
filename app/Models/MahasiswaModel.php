@@ -9,7 +9,7 @@ class MahasiswaModel extends Model
 {
     use HasFactory;
     protected $table = 'mahasiswa'; // Eloquent akan membuat model mahasiswa menyimpan record di tabel mahasiswa
-    protected $primarykey = 'nim'; // Memanggil isi DB dengan primarykey
+    protected $primarykey = 'id'; // Memanggil isi DB dengan primarykey
 
     protected $fillable = [
         'nim',
@@ -25,5 +25,8 @@ class MahasiswaModel extends Model
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
+    }
+    public function matakuliahs(){
+        return $this->belongsToMany(MataKuliah::class, 'mahasiswa_matakuliah','mahasiswa_id','matakuliah_id')->withPivot('nilai');
     }
 }

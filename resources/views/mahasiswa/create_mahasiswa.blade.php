@@ -106,6 +106,7 @@
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="#" class="btn btn-warning" onclick="history.back()">Kembali</a>
                 <!-- /.card-body -->
 
                 <!-- /.card-footer-->
