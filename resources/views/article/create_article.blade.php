@@ -1,4 +1,4 @@
-@extends('layouts.template', ['title' => 'keluarga'])
+@extends('layouts.template', ['title' => 'article'])
 @section('content')
     @push('custom_css')
         <style>
