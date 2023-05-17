@@ -65,6 +65,7 @@ Route::middleware(['auth'])->group(function(){
     // Route::get('/articles',[ArticleController::class, 'index']);
     Route::get('/nilai/{id}',[NilaiController::class, 'show']);
     Route::resource('/articles', ArticleController::class);
+    Route::get('/article/cetak_pdf', [ArticleController::class, 'cetak_pdf']);
     Route::resource('/hobi', HobiController::class);
     Route::resource('/keluarga', KeluargaController::class);
     Route::resource('/mata_kuliah', MataKuliahController::class);

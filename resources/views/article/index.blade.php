@@ -5,6 +5,22 @@
             h1 {
                 font-weight: bold;
             }
+
+            table {
+                table-layout: fixed;
+            }
+
+            .col-no {
+                width: 55px;
+            }
+
+            td:nth-child(4) {
+                width: 150px;
+                /* Ubah lebar sesuai kebutuhan Anda */
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
         </style>
     @endpush
     <div class="content-wrapper">
@@ -28,9 +44,9 @@
         <!-- Main content -->
         <section class="content">
 
-            @if (session()->has("success"))
+            @if (session()->has('success'))
                 <div class="alert alert-success">
-                    {{ session("success")}}
+                    {{ session('success') }}
                 </div>
             @endif
             <!-- Default box -->
@@ -50,13 +66,16 @@
                 <div class="card-body">
 
                     <a href="{{ url('articles/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
+                    <a href="{{ url('/article/cetak_pdf') }}"" class="btn btn-sm btn-info my-2">Cetak PDF</a>
 
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th class="col-no">No</th>
                                 <th>Judul</th>
                                 <th>Penulis</th>
+                                <th>Isi</th>
+                                <th>Gambar</th>
                                 <th>Kategori</th>
                                 <th>Tahun Terbit</th>
                                 <th>Action</th>
@@ -69,21 +88,23 @@
                                         <td>{{ ++$i }}</td>
                                         <td>{{ $a->judul }}</td>
                                         <td>{{ $a->penulis }}</td>
+                                        <td>{{ $a->content }}</td>
+                                        <td><img src="{{ asset('storage/' . $a->featured_image) }}" width="105px"></td>
                                         <td>{{ $a->kategori }}</td>
                                         <td>{{ $a->tahun_terbit }}</td>
-                                        <td >
+                                        <td>
                                             <!-- Bikin tombol edit dan delete -->
                                             <div class="row justify-content-center">
-                                                
-                                                <a href="{{ url('/articles/' . $a->id . '/edit') }}" 
+
+                                                <a href="{{ url('/articles/' . $a->id . '/edit') }}"
                                                     class="btn btn-sm btn-warning mr-2">Edit</a>
-                                            
+
                                                 <form method="POST" action="{{ url('/articles/' . $a->id) }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                                 </form>
-                                            </div>                                            
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

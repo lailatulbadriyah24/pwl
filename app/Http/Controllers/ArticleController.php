@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class ArticleController extends Controller
 {
@@ -52,7 +53,8 @@ class ArticleController extends Controller
             'kategori' => $request->kategori,
             'tahun_terbit' => $request->tahun_terbit
         ]);
-        return 'Artikel berhasil disimpan';
+        return redirect('/articles')
+                ->with('success', 'Artikel Berhasil Ditambahkan');
     }
 
     /**
@@ -106,7 +108,8 @@ class ArticleController extends Controller
         $article->featured_image = $image_name;
 
         $article->save();
-        return 'Artikel berhasil diubah';
+        return redirect('/articles')
+                ->with('success', 'Artikel Berhasil Diedit');
     }
 
     /**
@@ -118,5 +121,19 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
+        {
+            $requestData['id'] = $id;
+    
+            Article::where('id', '=', $id)->delete();
+            return redirect('/articles')
+                ->with('success', 'Artikel Berhasil Dihapus');
+        }
     }  
+
+    public function cetak_pdf()
+    {
+        $articles = Article::all();
+        $pdf = PDF::loadView('article.articles_pdf', ['articles' => $articles]);
+        return $pdf->stream();
+    } 
 }

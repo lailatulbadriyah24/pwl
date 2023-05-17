@@ -155,6 +155,8 @@ return [
     */
 
     'providers' => [
+    
+
 
         /*
          * Laravel Framework Service Providers...
@@ -194,7 +196,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -211,5 +213,5 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
-
+    'PDF' => Barryvdh\DomPDF\Facade::class,
 ];
