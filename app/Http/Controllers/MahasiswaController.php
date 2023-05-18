@@ -6,6 +6,7 @@ use App\Models\Kelas;
 use App\Models\Mahasiswa;
 use App\Models\MahasiswaModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MahasiswaController extends Controller
 {
@@ -47,7 +48,10 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //validasi
+        //
+        if ($request->file('image')) {
+            $image_name = $request->file('image')->store('images', 'public');
+        }
         $request->validate([
             'nim'=>'required|string|max:10|unique:mahasiswa,nim',
             'nama'=>'required|string|max:50',
@@ -56,13 +60,12 @@ class MahasiswaController extends Controller
             'tanggal_lahir'=>'required|date',
             'alamat'=>'required|string|max:255',
             'hp'=> 'required|digits_between:6,15'
-
-            
         ]);
 
         $mahasiswa = new MahasiswaModel;
         $mahasiswa->nim = $request->get('nim');
         $mahasiswa->nama = $request->get('nama');
+        $mahasiswa->foto = $image_name;
         $mahasiswa->jk = $request->get('jk');
         $mahasiswa->tempat_lahir = $request->get('tempat_lahir');
         $mahasiswa->tanggal_lahir = $request->get('tanggal_lahir');
@@ -128,8 +131,15 @@ class MahasiswaController extends Controller
         ]);
 
         $mahasiswa = MahasiswaModel::with('kelas')->where('id', $id)->first();
+        if ($mahasiswa->foto && file_exists(storage_path('app/public' . $mahasiswa->foto))) {
+            Storage::delete(['public/' . $mahasiswa->foto]);
+        }
+
+        $image_name = $request->file('image')->store('images', 'public');
+
         $mahasiswa->nim = $request->get('nim');
         $mahasiswa->nama = $request->get('nama');
+        $mahasiswa->foto = $image_name;
         $mahasiswa->jk = $request->get('jk');
         $mahasiswa->tempat_lahir = $request->get('tempat_lahir');
         $mahasiswa->tanggal_lahir = $request->get('tanggal_lahir');

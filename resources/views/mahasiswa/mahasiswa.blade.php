@@ -28,9 +28,9 @@
         <!-- Main content -->
         <section class="content">
 
-            @if (session()->has("success"))
+            @if (session()->has('success'))
                 <div class="alert alert-success">
-                    {{ session("success")}}
+                    {{ session('success') }}
                 </div>
             @endif
             <!-- Default box -->
@@ -48,15 +48,14 @@
                     </div>
                 </div>
                 <div class="card-body">
-
                     <a href="{{ url('mahasiswa/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
-
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>NIM</th>
                                 <th>Nama</th>
+                                <th>Foto</th>
                                 <th>JK</th>
                                 <th>Nama Kelas</th>
                                 <th>HP</th>
@@ -65,37 +64,37 @@
                         </thead>
                         <tbody>
                             @if ($mahasiswa->count() > 0)
-                            @php
-                            $no = 1;
-                            @endphp
+                                @php
+                                    $no = 1;
+                                @endphp
                                 @foreach ($paginate as $m)
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $m->nim }}</td>
                                         <td>{{ $m->nama }}</td>
+                                        <td><img src="{{ asset('storage/' . $m->foto) }}" width="100px"></td>
                                         <td>{{ $m->jk }}</td>
                                         <td>{{ $m->kelas->nama_kelas }}</td>
                                         <td>{{ $m->hp }}</td>
-                                        <td >
+                                        <td>
                                             <!-- Bikin tombol edit dan delete -->
                                             <div class="row justify-content-center">
-                                                
-                                                <a href="{{ url('/mahasiswa/' . $m->id) }}" 
+
+                                                <a href="{{ url('/mahasiswa/' . $m->id) }}"
                                                     class="btn btn-sm btn-info mr-2">Show</a>
 
-                                                <a href="{{ url('/mahasiswa/' . $m->id . '/edit') }}" 
+                                                <a href="{{ url('/mahasiswa/' . $m->id . '/edit') }}"
                                                     class="btn btn-sm btn-warning mr-2">Edit</a>
-                                            
-                                        
-                                            
+
                                                 <form method="POST" action="{{ url('/mahasiswa/' . $m->id) }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger mr-2">Hapus</button>
                                                 </form>
-                                                    <a href="/nilai/{{ $m->id }}" class="btn btn-sm btn-success">Nilai</a>
+                                                <a href="/nilai/{{ $m->id }}"
+                                                    class="btn btn-sm btn-success">Nilai</a>
 
-                                            </div>                                            
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -105,7 +104,7 @@
                                 </tr>
                             @endif
                         </tbody>
-                    </table>                  
+                    </table>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

@@ -43,8 +43,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-
-                    <form method="POST" action="{{ $url_form }}"> 
+                    <form method="POST" action="{{ $url_form }}" enctype="multipart/form-data"> 
                         @csrf
                         {!! (isset($mahasiswa))? method_field('PUT') : ""!!}
                         
@@ -61,6 +60,8 @@
                             <span class="error invalid-feedback">{{ $message }} </span> 
                             @enderror
                         </div>
+                        <label for="image">Foto</label>
+                            <input type="file" class="form-control" required="required" name="image"></br>
                         <div class="form-group">
                             <label>Jenis Kelamin</label>
                             <input class="form-control @error('jk') is-invalid @enderror" value="{{ isset($mahasiswa)? $mahasiswa->jk : old('jk') }}" name="jk" type="text" /> 
