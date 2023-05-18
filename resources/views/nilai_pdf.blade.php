@@ -7,15 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kartu Hasil Studi - {{ $mahasiswa->nama }}</title>
 
-    <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}"> --}}
+
+    <link rel="stylesheet" href="{{ public_path('css/adminlte.min.css') }}">
 
     <style>
+        .text-center {
+            text-align: center;
+        }
+
         .biodata-table {
             margin-bottom: 2rem;
         }
 
         .biodata-table th {
             text-align: left;
+        }
+
+        .table-bordered {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid black;
+            padding: 8px;
         }
     </style>
 </head>
@@ -67,9 +84,7 @@
                 @endif
             </tbody>
         </table>
-        <a href="#" class="btn btn-warning" onclick="history.back()">Kembali</a>
-        <a href="{{ url('mahasiswa/nilai/' . $mahasiswa->id . '/cetak_pdf') }}" class="btn btn-danger">Cetak PDF</a>
-    </div>F
+    </div>
 </body>
 
 </html>
