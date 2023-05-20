@@ -69,7 +69,7 @@
         </table>
         <a href="#" class="btn btn-warning" onclick="history.back()">Kembali</a>
         <a href="{{ url('mahasiswa/nilai/' . $mahasiswa->id . '/cetak_pdf') }}" class="btn btn-danger">Cetak PDF</a>
-    </div>F
+    </div>
 </body>
 
 </html>
