@@ -217,7 +217,7 @@ class MahasiswaController extends Controller
 
         return response()->json([
             'status' => ($mhs),
-            'modal_close' => $mhs,
+            'modal_close' => !$mhs,
             'message' => ($mhs) ? 'Data berhasil diedit' : 'Data gagal diedit',
             'data' => null
         ]);
