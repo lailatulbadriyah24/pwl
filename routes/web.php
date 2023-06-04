@@ -71,6 +71,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/mata_kuliah', MataKuliahController::class);
     Route::resource('/mahasiswa', MahasiswaController::class);
     Route::get("/mahasiswa/nilai/{id}/cetak_pdf", [NilaiController::class, 'cetak_pdf']);
+    Route::post("/mahasiswa/data", [MahasiswaController::class, 'data']);
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
